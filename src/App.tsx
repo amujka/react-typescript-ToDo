@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { useState } from 'react';
+import './App.css'
+import TodoList from './components/TodoList'
+import Todo from './model/todo';
 
-import './App.css';
 
-function App() {
+
+const App:FC = () => {
+
+  const [todos, setTodos] = useState([
+    new Todo("Learn React"),new Todo("Learn TypeScript"),new Todo("Become Full-stack dev")
+  ])
   return (
-    <div className="App">
-     
+    <div>
+      <TodoList todos={todos}/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
