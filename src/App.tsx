@@ -12,10 +12,16 @@ const App:FC = () => {
    const addTodoHandler=(todo:string)=>{
      setTodos([...todos,new Todo(todo)])
    };
+
+   const deleteTodoHandler=(id:number)=>{
+     setTodos(
+       todos.filter((todo)=>todo.id!==id)
+    )
+   }
   return (
     <div>
       <Form addTodoHandler={addTodoHandler}/>
-      <TodoList todos={todos}/>
+      <TodoList todos={todos} deleteTodoHandler={deleteTodoHandler}/>
     </div>
   )
 }
