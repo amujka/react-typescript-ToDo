@@ -1,11 +1,13 @@
-import React from 'react'
-import Todo from '../model/todo'
-import TodoItem from './TodoItem'
+import React, { useContext } from 'react'
 
-const TodoList:React.FC<{todos:Todo[],deleteTodoHandler:(id:number)=>void}> = ({todos,deleteTodoHandler}) => {
+import TodoItem from './TodoItem'
+import {TodoContext} from '../store/todoContext'
+const TodoList:React.FC = () => {
+
+    const todosContext= useContext(TodoContext)
     return (
         <ul className="todos">
-           {todos.map((todo)=>{return <TodoItem todo={todo} key={todo.id} deleteTodoHandler={deleteTodoHandler}/> })}
+           {todosContext.todos.map((todo)=>{return <TodoItem todo={todo} key={todo.id} deleteTodoHandler={todosContext.deleteTodo}/> })}
         </ul>
     )
 }

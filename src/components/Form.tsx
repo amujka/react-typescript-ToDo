@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
+import { useContext } from 'react'
+import { TodoContext } from '../store/todoContext'
 
-const Form:React.FC<{addTodoHandler:(todo:string)=>void}> = ({addTodoHandler}) => {
+const Form:React.FC = () => {
 
+    const todoContext = useContext(TodoContext)
     const [newTodo, setnewTodo] = useState("")
-
     const submitHandler=(e:React.FormEvent)=>{
         e.preventDefault();
-addTodoHandler(newTodo)
+todoContext.addTodo(newTodo)
     }
     return (
         <form onSubmit={(e)=>{submitHandler(e)}}>
